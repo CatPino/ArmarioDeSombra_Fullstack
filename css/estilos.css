@@ -1,0 +1,40 @@
+/*selector de etiqueta*/
+body{
+    background-color: rgb(25, 24, 27);
+    /*margin-left: 50px;*/
+}
+
+img{
+    display: block;
+    margin:auto;
+}
+
+p{
+    line-height: 2;
+}
+/*selector de tipo class*/
+.titulo{
+    font-family: 'Times New Roman', Times, serif;
+    color:rgb(255, 255, 255);
+}
+
+a{
+    color:rgb(255, 255, 255);
+    text-decoration: none;
+    font-weight:800;
+}
+.carousel-item img{
+    width: 500px;
+    height: 300px;
+    object-fit: cover;
+}
+.bg-purple {
+    background-color: #271038;
+}
+.button {
+    background-color: rgb(101, 22, 175);
+    color: aliceblue;
+    padding: 10px 20px;  /* Espaciado interno */
+    font-size: 16px;     /* Tamaño del texto */
+    font-weight: bold;   /* Texto más grueso */
+}
