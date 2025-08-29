@@ -13,13 +13,13 @@
 <body>
     <div class="container-fluid">
         <!-- Navbar (Menú) -->
-        <nav class="navbar navbar-expand-sm navbar-dark bg-purple titulo">
+        <nav class="navbar navbar-expand-sm navbar-dark mi-navbar">
             <div class="container-fluid">
 
                 <!-- Botón de hamburguesa -->
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#Menu"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <img src="img/menuu.png" alt="Menu" style="width: 30px; height: 30px;">
+                    <img src="img/Menu.png" alt="Menu">
                 </button>
 
                 <!-- Menú de navegación -->
@@ -34,10 +34,11 @@
                             </a>
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="Poleras.html">Poleras</a></li>
-                                <li><a class="dropdown-item" href="#">Polerones</a></li>
-                                <li><a class="dropdown-item" href="#">Pantalones</a></li>
-                                <li><a class="dropdown-item" href="#">Faldas</a></li>
-                                <li><a class="dropdown-item" href="#">Accesorios</a></li>
+                                <li><a class="dropdown-item" href="Polerones.html">Polerones</a></li>
+                                <li><a class="dropdown-item" href="Calzas.html">Calzas</a></li>
+                                <li><a class="dropdown-item" href="Faldas.html">Faldas</a></li>
+                                <li><a class="dropdown-item" href="Calzado.html">Calzado</a></li>
+                                <li><a class="dropdown-item" href="Accesorios.html">Accesorios</a></li>
                             </ul>
                         </li>
                         <li class="nav-item">
@@ -50,12 +51,55 @@
                             <a class="nav-link disabled" href="#">Contactos</a>
                         </li>
                     </ul>
+                    <div>
+                        <button type="button" class="btn btn-transparent p-0" data-bs-toggle="modal" data-bs-target="#carritoModal">
+                            <img src="img/carrito1.png" alt="Carrito">
+                        </button>
+                        <button type="button" class="btn btn-transparent p-0" data-bs-toggle="modal" data-bs-target="#usuarioModal">
+                            <img src="img/user.png" alt="Usuario">
+                        </button>      
+                    </div>
                 </div>
             </div>
         </nav>
 
+        <!--Modal de carrito de compra)-->
+        <div class="modal fade" id="carritoModal" tabindex="-1" aria-labelledby="carritoModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="carritoModalLabel">Carrito de Compras</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>No hay productos en el carrito.</p>
+                    <!-- Aquí puedes agregar dinámicamente tus productos con JS -->
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn button2" data-bs-dismiss="modal">Cerrar</button>
+                        <button type="button" class="btn button1">Ir al pago</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-        
+        <!-- Modal del usuario -->
+        <div class="modal fade" id="usuarioModal" tabindex="-1" aria-labelledby="usuarioModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="modal-title titulo" id="usuarioModalLabel">Usuario</h3>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Inicia sesión o accede a tu perfil.</p>
+                        <button class="btn w-100 mb-2 button1" onclick="window.location.href='Login.html'">Iniciar sesión</button>
+                        <button class="btn w-100 button2" onclick="window.location.href='Registro.html'">Regístrate</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- Carousel -->
         <div id="demo" class="carousel slide" data-bs-ride="carousel">
 
@@ -90,15 +134,18 @@
     </div>
             <!--cards-->
     <div class="container mt-4">
-        <h2 class="text-center mb-4 titulo" >Productos más vendidos</h2>
-            <div class="row" style="margin-top:15px">
+        <h1>Conoce los nuevos productos</h1>
+        <h2>Descubre nuestros productos más vendidos y encuentra los artículos que están marcando tendencia. 
+            Desde prendas esenciales hasta accesorios únicos, cada pieza está diseñada para mejorar tu estilo
+             y destacar tu personalidad. ¡No te pierdas lo más popular y dale un toque único a tu look!</h2>
+            <div class="row" style="margin-top:20px">
                 <div class="col-md-3 mb-5">
                     <div class="card">
                         <img class="card-img-top" src="img/carrusel1.jpg" alt="card1">
                         <div class="card-body text-center">
-                        <h4 class="card-title">John Doe</h4>
+                        <h3 class="card-title">Polera manga corta</h3>
                         <p class="card-text">Some example text.</p>
-                        <button type="button" class="btn button" data-bs-toggle="modal" data-bs-target="#miModal1">Ver más</button>
+                        <button type="button" class="btn button1" data-bs-toggle="modal" data-bs-target="#miModal1">Ver más</button>
                         </div>
                     </div>
                 </div>
@@ -107,9 +154,9 @@
                     <div class="card">
                         <img class="card-img-top" src="img/carrusel1.jpg" alt="card1">
                         <div class="card-body text-center ">
-                        <h4 class="card-title">John Doe</h4>
+                        <h3 class="card-title">Falda negra</h3>
                         <p class="card-text">Some example text.</p>
-                        <button type="button" class="btn button" data-bs-toggle="modal" data-bs-target="#miModal2">Ver más</button>
+                        <button type="button" class="btn button1" data-bs-toggle="modal" data-bs-target="#miModal2">Ver más</button>
                         </div>
                     </div>
                 </div>
@@ -118,9 +165,9 @@
                     <div class="card">
                         <img class="card-img-top" src="img/carrusel1.jpg" alt="card1">
                         <div class="card-body text-center">
-                        <h4 class="card-title">John Doe</h4>
+                        <h3 class="card-title">John Doe</h3>
                         <p class="card-text">Some example text.</p>
-                        <button type="button" class="btn button" data-bs-toggle="modal" data-bs-target="#miModal3">Ver más</button>
+                        <button type="button" class="btn button1" data-bs-toggle="modal" data-bs-target="#miModal3">Ver más</button>
                         </div>
                     </div>
                 </div>
@@ -129,9 +176,9 @@
                     <div class="card">
                         <img class="card-img-top" src="img/carrusel1.jpg" alt="card1">
                         <div class="card-body text-center">
-                        <h4 class="card-title">John Doe</h4>
+                        <h3 class="card-title">John Doe</h3>
                         <p class="card-text">Some example text.</p>
-                        <button type="button" class="btn button" data-bs-toggle="modal" data-bs-target="#miModal4">Ver más</button>
+                        <button type="button" class="btn button1" data-bs-toggle="modal" data-bs-target="#miModal4">Ver más</button>
                         </div>
                     </div>
                 </div>

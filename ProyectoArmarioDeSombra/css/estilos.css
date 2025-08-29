@@ -1,40 +1,98 @@
 /*selector de etiqueta*/
 body{
     background-color: rgb(25, 24, 27);
-    /*margin-left: 50px;*/
 }
 
 img{
     display: block;
     margin:auto;
 }
-
+/*Parrafo para fondo blanco*/
 p{
+    color: #271038;
     line-height: 2;
-}
-/*selector de tipo class*/
-.titulo{
-    font-family: 'Times New Roman', Times, serif;
-    color:rgb(255, 255, 255);
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
-a{
-    color:rgb(255, 255, 255);
-    text-decoration: none;
-    font-weight:800;
+h1{
+    color: white;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold; 
+    text-align: center;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
 }
+h2{
+    color: rgb(241, 226, 247);
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 20px;
+    text-align: center;
+    letter-spacing: 0,10px;    
+}
+/*titulo para fondo blanco*/
+h3{
+    color: #271038;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 20px;   /* Tamaño del texto */
+    font-weight: bold; /* Hace que sea más grueso */
+    text-transform: uppercase;
+}
+a {
+    color: blueviolet;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+label{
+    color: #271038;
+    font-family: 'Times New Roman', Times, serif;
+}
+input{
+    color: rgb(241, 226, 247);
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
+}
+
+/*selector de tipo class*/
+
 .carousel-item img{
     width: 500px;
     height: 300px;
     object-fit: cover;
 }
-.bg-purple {
-    background-color: #271038;
-}
-.button {
+/*Boton de un color*/
+.button1 {
     background-color: rgb(101, 22, 175);
+    color: aliceblue;
+    font-size: 16px;     /* Tamaño del texto */
+    font-weight: bold;   /* Texto más grueso */
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    border: none;
+}
+
+/*Boton de otro color*/
+.button2{
+    background-color: rgb(0, 0, 0);
     color: aliceblue;
     padding: 10px 20px;  /* Espaciado interno */
     font-size: 16px;     /* Tamaño del texto */
     font-weight: bold;   /* Texto más grueso */
+    border-radius: 8px;
+    cursor: pointer;
+    border: none;
+
+}
+
+.mi-navbar {
+    padding-top: 1rem;    /* Espacio arriba */
+    padding-bottom: 1rem; /* Espacio abajo */
+    min-height: 90px;     /* Altura mínima */
+    background-color: #271038;
+    font-size: 20px;
+}
+.navbar button img {
+    width: 35px;           /* tamaño de la imagen */
+    height: 35px;          /* tamaño de la imagen */
+    object-fit: cover;     /* ajusta la imagen sin deformarla */
+    margin: 0 5px;        /* margen horizontal para separarla de otros elementos */
 }

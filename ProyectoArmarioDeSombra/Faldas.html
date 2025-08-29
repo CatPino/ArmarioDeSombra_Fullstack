@@ -100,12 +100,49 @@
         </div>
     </div>
 
+        <!--Modal de carrito de compra)-->
+        <div class="modal fade" id="carritoModal" tabindex="-1" aria-labelledby="carritoModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="carritoModalLabel">Carrito de Compras</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>No hay productos en el carrito.</p>
+                    <!-- Aquí puedes agregar dinámicamente tus productos con JS -->
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn button1" data-bs-dismiss="modal">Cerrar</button>
+                        <button type="button" class="btn button2">Ir al pago</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal del usuario -->
+        <div class="modal fade" id="usuarioModal" tabindex="-1" aria-labelledby="usuarioModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="usuarioModalLabel">Usuario</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Inicia sesión o accede a tu perfil.</p>
+                        <button class="btn w-100 mb-2 button1" onclick="window.location.href='Login.html'">Iniciar sesión</button>
+                        <button class="btn w-100 button2" onclick="window.location.href='Registro.html'">Regístrate</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
             <!--cards-->
     <div class="container mt-4">
-        <h1>Poleras</h1>
-        <h2>Nuestras poleras son el reflejo de un estilo auténtico. Simples, pero con personalidad marcada, 
-            añaden a tu look un aire oscuro y moderno, logrando que incluso lo cotidiano se sienta distinto, 
-            único y lleno de carácter.</h2>
+        <h1>Faldas</h1>
+        <h2>Las faldas están pensadas para realzar tu esencia con un aire alternativo. 
+            Su estilo sutilmente gótico permite expresar tu personalidad con fuerza, 
+            equilibrando lo clásico y lo moderno en un look que nunca pasa desapercibido.</h2>
             <div class="row" style="margin-top: 20px">
                 <div class="col-md-3 mb-5">
                     <div class="card">
