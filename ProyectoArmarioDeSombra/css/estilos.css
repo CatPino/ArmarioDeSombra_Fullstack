@@ -21,6 +21,8 @@ h1{
     text-align: center;
     text-transform: uppercase;
     text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+    margin-bottom: 40px;
+    margin-top: 60px;
 }
 h2{
     color: rgb(241, 226, 247);
@@ -96,3 +98,4 @@ input{
     object-fit: cover;     /* ajusta la imagen sin deformarla */
     margin: 0 5px;        /* margen horizontal para separarla de otros elementos */
 }
+

@@ -13,13 +13,13 @@
 <body>
     <div class="container-fluid">
         <!-- Navbar (Menú) -->
-        <nav class="navbar navbar-expand-sm navbar-dark mi-navbar">
+        <nav class="navbar navbar-expand-sm navbar-dark mi-navbar position-relative">
             <div class="container-fluid">
 
                 <!-- Botón de hamburguesa -->
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#Menu"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <img src="img/Menu.png" alt="Menu" style="width: 30px; height: 30px;">
+                    <img src="img/Menu.png" alt="Menu">
                 </button>
 
                 <!-- Menú de navegación -->
@@ -51,13 +51,14 @@
                             <a class="nav-link disabled" href="#">Contactos</a>
                         </li>
                     </ul>
+                </div>
+                <div style="position:absolute; right:10px; top:28px; display:flex; gap:10px;">
                     <button type="button" class="btn btn-transparent p-0" data-bs-toggle="modal" data-bs-target="#carritoModal">
-                        <img src="img/carrito1.png" alt="Carrito">
+                        <img src="img/carrito1.png">
                     </button>
                     <button type="button" class="btn btn-transparent p-0" data-bs-toggle="modal" data-bs-target="#usuarioModal">
-                        <img src="img/user.png" alt="Usuario">
+                        <img src="img/user.png">
                     </button>
-
                 </div>
             </div>
         </nav>
@@ -100,7 +101,9 @@
         </div>
     </div>
 
-    <div class="container d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+
+    <h1>¡Bienvenido de nuevo!</h1>
+    <div class="container d-flex justify-content-center align-items-center" style="min-height: 50vh;">
         <div class="card p-4 shadow-sm" style="max-width: 600px; width: 100%;">
         <h3 class="text-center mb-4">Iniciar Sesión</h3>
         
