@@ -13,7 +13,7 @@
 <body>
     <div class="container-fluid">
         <!-- Navbar (Menú) -->
-        <nav class="navbar navbar-expand-sm navbar-dark mi-navbar position-relative">
+        <nav class="navbar navbar-expand-sm mi-navbar position-relative">
             <div class="container-fluid">
 
                 <!-- Botón de hamburguesa -->
@@ -22,11 +22,16 @@
                     <img src="img/Menu.png" alt="Menu">
                 </button>
 
+
+                <a class="navbar-brand mx-auto order-0" href="Home.html">
+                    <img src="img/Logo.png" alt="Logo" width="60">
+                </a>
+
                 <!-- Menú de navegación -->
                 <div class="collapse navbar-collapse" id="Menu">
                     <ul class="navbar-nav mx-auto">
                         <li class="nav-item">
-                            <a class="nav-link active" href="Home.html">Home</a>
+                            <a class="nav-link" href="Home.html">Home</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="Producto.html" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -34,7 +39,6 @@
                             </a>
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="Poleras.html">Poleras</a></li>
-                                <li><a class="dropdown-item" href="Polerones.html">Polerones</a></li>
                                 <li><a class="dropdown-item" href="Calzas.html">Calzas</a></li>
                                 <li><a class="dropdown-item" href="Faldas.html">Faldas</a></li>
                                 <li><a class="dropdown-item" href="Calzado.html">Calzado</a></li>
@@ -45,14 +49,14 @@
                             <a class="nav-link" href="#">Nosotros</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link disabled" href="#">Blogs</a>
+                            <a class="nav-link" href="#">Blogs</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link disabled" href="#">Contactos</a>
+                            <a class="nav-link" href="#">Contactos</a>
                         </li>
                     </ul>
                 </div>
-                <div style="position:absolute; right:10px; top:28px; display:flex; gap:10px;">
+                <div class="iconos-navbar">
                     <button type="button" class="btn btn-transparent p-0" data-bs-toggle="modal" data-bs-target="#carritoModal">
                         <img src="img/carrito1.png">
                     </button>
@@ -101,10 +105,8 @@
         </div>
 
 
-        <h1 style="font-size: 50px;">Bienvenido al Armario de Sombra</h1>
-        <H2>Cada prenda en Armario de Sombra es única, diseñada para quienes buscan destacar con un estilo gótico auténtico.</H2>
         <!-- Carousel -->
-        <div id="demo" class="carousel slide" data-bs-ride="carousel">
+        <div id="demo" class="carousel slide mt-5" data-bs-ride="carousel">
 
         <!-- Indicators/dots -->
         <div class="carousel-indicators">
@@ -116,7 +118,7 @@
         <!-- The slideshow/carousel -->
         <div class="carousel-inner">
             <div class="carousel-item active">
-            <img src="img/cat1.jpg" alt="Gato1" class="d-block w-100" >
+            <img src="img/fotoCarusel.1.png" alt="Gato1" class="d-block w-100" >
             </div>
             <div class="carousel-item">
             <img src="img/Cat2webp.webp" alt="Gato2" class="d-block w-100">
@@ -138,7 +140,7 @@
             <!--cards-->
     <div class="container mt-4">
         <h1>Conoce los nuevos productos</h1>
-        <h2>Descubre nuestros productos más vendidos y encuentra los artículos que están marcando tendencia. 
+        <h2>Descubre nuestros productos y encuentra los artículos que están marcando tendencia. 
             Desde prendas esenciales hasta accesorios únicos, cada pieza está diseñada para mejorar tu estilo
              y destacar tu personalidad. ¡No te pierdas lo más popular y dale un toque único a tu look!</h2>
             <div class="row">
@@ -286,12 +288,13 @@
     <!--footer-->
     <footer class="mi-footer">
         <div class="container">
-            <h2>Siguenos en:</h2>
+            <h2 style="color: white;">Siguenos en:</h2>
             <a href="https://www.instagram.com/" target="_blank">
                 <img src="img/instagram.png" alt="Instagram" width="40" height="40">
             </a>
         </div>
     </footer>
+    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
