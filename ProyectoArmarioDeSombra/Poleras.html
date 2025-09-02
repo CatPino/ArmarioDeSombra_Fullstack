@@ -13,7 +13,7 @@
 <body>
     <div class="container-fluid">
         <!-- Navbar (Menú) -->
-        <nav class="navbar navbar-expand-sm navbar-dark mi-navbar position-relative">
+        <nav class="navbar navbar-expand-sm mi-navbar position-relative">
             <div class="container-fluid">
 
                 <!-- Botón de hamburguesa -->
@@ -22,11 +22,16 @@
                     <img src="img/Menu.png" alt="Menu">
                 </button>
 
+
+                <a class="navbar-brand mx-auto order-0" href="Home.html">
+                    <img src="img/Logo.png" alt="Logo" width="60">
+                </a>
+
                 <!-- Menú de navegación -->
                 <div class="collapse navbar-collapse" id="Menu">
                     <ul class="navbar-nav mx-auto">
                         <li class="nav-item">
-                            <a class="nav-link active" href="Home.html">Home</a>
+                            <a class="nav-link" href="Home.html">Home</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="Producto.html" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -34,7 +39,6 @@
                             </a>
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="Poleras.html">Poleras</a></li>
-                                <li><a class="dropdown-item" href="Polerones.html">Polerones</a></li>
                                 <li><a class="dropdown-item" href="Calzas.html">Calzas</a></li>
                                 <li><a class="dropdown-item" href="Faldas.html">Faldas</a></li>
                                 <li><a class="dropdown-item" href="Calzado.html">Calzado</a></li>
@@ -45,14 +49,14 @@
                             <a class="nav-link" href="#">Nosotros</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link disabled" href="#">Blogs</a>
+                            <a class="nav-link" href="#">Blogs</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link disabled" href="#">Contactos</a>
+                            <a class="nav-link" href="#">Contactos</a>
                         </li>
                     </ul>
                 </div>
-                <div style="position:absolute; right:10px; top:28px; display:flex; gap:10px;">
+                <div class="iconos-navbar">
                     <button type="button" class="btn btn-transparent p-0" data-bs-toggle="modal" data-bs-target="#carritoModal">
                         <img src="img/carrito1.png">
                     </button>
@@ -62,7 +66,6 @@
                 </div>
             </div>
         </nav>
-
         <!--Modal de carrito de compra)-->
         <div class="modal fade" id="carritoModal" tabindex="-1" aria-labelledby="carritoModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
@@ -250,9 +253,9 @@
     </div>
 
     <!--footer-->
-    <footer class="mi-footer ">
+    <footer class="mi-footer">
         <div class="container">
-            <h2>Siguenos en:</h2>
+            <h2 style="color: white;">Siguenos en:</h2>
             <a href="https://www.instagram.com/" target="_blank">
                 <img src="img/instagram.png" alt="Instagram" width="40" height="40">
             </a>

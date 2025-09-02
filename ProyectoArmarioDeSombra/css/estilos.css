@@ -1,7 +1,7 @@
 /*selector de etiqueta*/
 
 html, body {
-    background-color: rgb(25, 24, 27);
+    background-color: rgb(255, 255, 255);
     height: 100%; /* Que el body ocupe toda la altura */
     margin: 0;
     display: flex;
@@ -12,48 +12,35 @@ img{
     display: block;
     margin:auto;
 }
-/*Parrafo para fondo blanco*/
-p{
-    color: #271038;
-    line-height: 2;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-}
-h3{
-    color: #271038;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    font-size: 20px;   /* Tamaño del texto */
-    font-weight: bold; /* Hace que sea más grueso */
-    text-transform: uppercase;
-}
- /*Para fondo negro*/
+
 h1{
-    color: white;
+    color: rgb(0, 0, 0);
     font-family:  'Times New Roman', Times, serif;
     font-weight: bold; 
     text-align: center;
     text-transform: uppercase;
-    text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
     margin-bottom: 25px;
     margin-top: 30px;
 }
 h2{
-    color: rgb(241, 226, 247);
+    color: rgb(0, 0, 0);
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: 25px;
     text-align: center;
     letter-spacing: 0,10px;    
 }
-/*titulo para fondo blanco*/
+
 a {
-    color: blueviolet;
+    color: rgb(125, 0, 183);
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 label{
-    color: #271038;
+    color: #000000;
     font-family: 'Times New Roman', Times, serif;
 }
 input{
-    color: rgb(241, 226, 247);
+    color: rgb(0, 0, 0);
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 
 }
@@ -61,14 +48,15 @@ input{
 /*selector de tipo class*/
 
 .carousel-item img{
-    width: 500px;
-    height: 300px;
-    object-fit: cover;
+    max-width: 1200px; /* ancho máximo deseado */
+    height: 500;     /* mantiene proporción */
+    display: block;
+    margin: 0 auto;   /* centra la imagen */
 }
 /*Boton de un color*/
 .button1 {
-    background-color: rgb(101, 22, 175);
-    color: aliceblue;
+    background-color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
     font-size: 16px;     /* Tamaño del texto */
     font-weight: bold;   /* Texto más grueso */
     padding: 10px 20px;
@@ -80,7 +68,7 @@ input{
 /*Boton de otro color*/
 .button2{
     background-color: rgb(0, 0, 0);
-    color: aliceblue;
+    color: rgb(255, 255, 255);
     padding: 10px 20px;  /* Espaciado interno */
     font-size: 16px;     /* Tamaño del texto */
     font-weight: bold;   /* Texto más grueso */
@@ -90,25 +78,50 @@ input{
 
 }
 .mi-navbar {
-    padding-top: 1rem;    /* Espacio arriba */
-    padding-bottom: 1rem; /* Espacio abajo */
-    min-height: 90px;     /* Altura mínima */
-    background-color: #360d56;
+    padding-top: 1rem;    
+    padding-bottom: 1rem; 
+    min-height: 70px;     
+    background-color: #000000;
     font-size: 25px;
-    
+}
+.mi-navbar .nav-link {
+    color: rgb(255, 255, 255); 
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+.mi-navbar .nav-link:hover {
+    color: #d18cff;
+}
+.mi-navbar .dropdown-item {
+    color: #000000;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.mi-navbar .dropdown-item:hover {
+    color: #ad45d0;
 }
 .navbar button img {
-    width: 35px;           /* tamaño de la imagen */
-    height: 35px;          /* tamaño de la imagen */
+    width: 30px;           /* tamaño de la imagen */
+    height: 30px;          /* tamaño de la imagen */
     object-fit: cover;     /* ajusta la imagen sin deformarla */
     margin: 0 5px;        /* margen horizontal para separarla de otros elementos */
 }
+.iconos-navbar {
+    position: absolute;   /* posiciona respecto al navbar */
+    right: 15px;          /* 10px del borde derecho */
+    top: 35px;            /* 28px desde arriba */
+    display: flex;        /* pone los botones en fila */
+    gap: 8px;            /* espacio entre botones */
+}
 .mi-footer {
-  background-color: #360d56; /* morado oscuro */
+  background-color: #000000; /* morado oscuro */
   color: white;
   text-align: center;
-  padding: 2rem 1rem;
-  margin-top: 2rem;
+  padding: 1rem;
+  margin-top: 3rem;
+}
+.navbar-brand img {
+    width: 60px;
+    filter: drop-shadow(0 0 5px white); /* sombra blanca difusa */
 }
 .card {
     width: 300px;       /* ancho fijo */
@@ -124,5 +137,5 @@ input{
     flex-direction: column;   
     justify-content: space-between; /* separa el contenido y el botón */
     text-align: center;
+    box-shadow: 0 4px 8px rgba(73, 7, 7, 0.397); /* horizontal, vertical, difuminado, color */
 }
-
