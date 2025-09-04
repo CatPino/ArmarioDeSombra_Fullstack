@@ -38,18 +38,18 @@
                                 Productos
                             </a>
                             <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="Todos.html">Todo los productos</a></li>
                                 <li><a class="dropdown-item" href="Poleras.html">Poleras</a></li>
                                 <li><a class="dropdown-item" href="Calzas.html">Calzas</a></li>
                                 <li><a class="dropdown-item" href="Faldas.html">Faldas</a></li>
-                                <li><a class="dropdown-item" href="Calzado.html">Calzado</a></li>
                                 <li><a class="dropdown-item" href="Accesorios.html">Accesorios</a></li>
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Nosotros</a>
+                            <a class="nav-link" href="Nosotros.html">Nosotros</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Blogs</a>
+                            <a class="nav-link" href="Blogs.html">Blogs</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">Contacto</a>
@@ -110,145 +110,15 @@
         <h2>Nuestras poleras son el reflejo de un estilo auténtico. Simples, pero con personalidad marcada, 
             añaden a tu look un aire oscuro y moderno, logrando que incluso lo cotidiano se sienta distinto, 
             único y lleno de carácter.</h2>
-            <div class="row">
-                <div class="col-md-3 mb-5">
-                    <div class="card">
-                        <img class="card-img-top" src="img/carrusel1.jpg" alt="card1">
-                        <div class="card-body text-center">
-                        <h3 class="card-title">John Doe</h3>
-                        <p class="card-text">Some example text.</p>
-                        <button type="button" class="btn button1" data-bs-toggle="modal" data-bs-target="#miModal1">Ver más</button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-3 mb-5">
-                    <div class="card">
-                        <img class="card-img-top" src="img/carrusel1.jpg" alt="card1">
-                        <div class="card-body text-center ">
-                        <h3 class="card-title">John Doe</h3>
-                        <p class="card-text">Some example text.</p>
-                        <button type="button" class="btn button1" data-bs-toggle="modal" data-bs-target="#miModal2">Ver más</button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-3 mb-5">
-                    <div class="card">
-                        <img class="card-img-top" src="img/carrusel1.jpg" alt="card1">
-                        <div class="card-body text-center">
-                        <h3 class="card-title">John Doe</h3>
-                        <p class="card-text">Some example text.</p>
-                        <button type="button" class="btn button1" data-bs-toggle="modal" data-bs-target="#miModal3">Ver más</button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-3 mb-5">
-                    <div class="card">
-                        <img class="card-img-top" src="img/carrusel1.jpg" alt="card1">
-                        <div class="card-body text-center">
-                        <h3 class="card-title">John Doe</h3>
-                        <p class="card-text">Some example text.</p>
-                        <button type="button" class="btn button1" data-bs-toggle="modal" data-bs-target="#miModal4">Ver más</button>
-                        </div>
-                    </div>
-                </div>
-
+                 
+        <!-- Contenedor donde JS inyectará las cards -->
+            <div class="row mt-5" id="contenedor-productos">
+                <!-- JS inyectará las cards aquí -->
             </div>
         </div>
-    </div>
 
-    <!--modal-->
-    <div class="modal fade" id="miModal1" tabindex="-1" aria-labelledby="tituloModal1" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="tituloModal1">Polera</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                </div>
-                <div class="modal-body">
-                    <img src="img/carrusel1.jpg" class="img-fluid mb-3" alt="Producto 1">
-                    <p><strong>Precio:</strong> $10.990 CLP</p>
-                    <p><strong>Tallas disponibles:</strong> S, M, L, XL</p>
-                    <p><strong>Colores disponibles:</strong> Negro, Blanco, Azul Marino, Gris</p>
-                    <p><strong>Material:</strong> 100% algodón</p>
-                    <p><strong>Descripción:</strong>Polera negra manga corta</p>
-                </div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                    <button class="btn btn-success">Agregar al carrito</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal fade" id="miModal2" tabindex="-1" aria-labelledby="tituloModal2" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="tituloModal2">Polera</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                </div>
-                <div class="modal-body">
-                    <img src="img/carrusel1.jpg" class="img-fluid mb-3" alt="Producto 1">
-                    <p><strong>Precio:</strong> $10.990 CLP</p>
-                    <p><strong>Tallas disponibles:</strong> S, M, L, XL</p>
-                    <p><strong>Colores disponibles:</strong> Negro, Blanco, Azul Marino, Gris</p>
-                    <p><strong>Material:</strong> 100% algodón</p>
-                    <p><strong>Descripción:</strong>Polera negra manga corta</p>
-                </div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                    <button class="btn btn-success">Agregar al carrito</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal fade" id="miModal3" tabindex="-1" aria-labelledby="tituloModal3" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="tituloModal3">Polera</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                </div>
-                <div class="modal-body">
-                    <img src="img/carrusel1.jpg" class="img-fluid mb-3" alt="Producto 1">
-                    <p><strong>Precio:</strong> $10.990 CLP</p>
-                    <p><strong>Tallas disponibles:</strong> S, M, L, XL</p>
-                    <p><strong>Colores disponibles:</strong> Negro, Blanco, Azul Marino, Gris</p>
-                    <p><strong>Material:</strong> 100% algodón</p>
-                    <p><strong>Descripción:</strong>Polera negra manga corta</p>
-                </div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                    <button class="btn btn-success">Agregar al carrito</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal fade" id="miModal4" tabindex="-1" aria-labelledby="tituloModal4" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="tituloModal4">Polera</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                </div>
-                <div class="modal-body">
-                    <img src="img/carrusel1.jpg" class="img-fluid mb-3" alt="Producto 1">
-                    <p><strong>Precio:</strong> $10.990 CLP</p>
-                    <p><strong>Tallas disponibles:</strong> S, M, L, XL</p>
-                    <p><strong>Colores disponibles:</strong> Negro, Blanco, Azul Marino, Gris</p>
-                    <p><strong>Material:</strong> 100% algodón</p>
-                    <p><strong>Descripción:</strong>Polera negra manga corta</p>
-                </div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                    <button class="btn btn-success">Agregar al carrito</button>
-                </div>
-            </div>
+        <div id="contenedor-modals">
+        <!-- JS inyectará los modals aquí -->
         </div>
     </div>
 
@@ -265,5 +135,11 @@
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/funcionesGenerales.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            renderizarProductosPorCategoria("Poleras");
+        });
+    </script>
 </body>
 </html>
