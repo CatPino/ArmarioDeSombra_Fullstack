@@ -10,24 +10,25 @@
     <link rel="stylesheet" href="css/estilos.css">
     <style>
         .container-register {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            /* ocupa toda la altura de la pantalla */
+            display: block;       /* normal flow */
+            max-width: 700px;     /* ancho máximo de la card */
+            margin-bottom: 40px; /* separa del navbar y del footer */
+            margin-top: 40px;
         }
 
         .card-register {
-            width: 600px;
-            height: 750px;
-            padding: 1.5rem;
+            width: 100%;
+            height: auto;         /* se ajusta al contenido */
+            padding: 1rem;
             background-color: white;
-            /* color de la tarjeta */
             border-radius: 15px;
-            /* bordes redondeados */
-            box-shadow: 0 0.5rem 1.5rem rgba(47, 7, 7, 0.419);
-            /* sombra más suave y visible */
+            box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.512);
         }
+        .font-regi-login {
+            font-size: 2rem;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            color: #000000;
+    }
     </style>
 </head>
 
@@ -60,18 +61,18 @@
                                 Productos
                             </a>
                             <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="Todos.html">Todo los productos</a></li>
                                 <li><a class="dropdown-item" href="Poleras.html">Poleras</a></li>
                                 <li><a class="dropdown-item" href="Calzas.html">Calzas</a></li>
                                 <li><a class="dropdown-item" href="Faldas.html">Faldas</a></li>
-                                <li><a class="dropdown-item" href="Calzado.html">Calzado</a></li>
                                 <li><a class="dropdown-item" href="Accesorios.html">Accesorios</a></li>
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Nosotros</a>
+                            <a class="nav-link" href="Nosotros.html">Nosotros</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Blogs</a>
+                            <a class="nav-link" href="Blogs.html">Blogs</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">Contacto</a>
@@ -132,7 +133,7 @@
 
         <div class="container container-register">
             <div class="card card-register">
-                <h1 style="font-size: 2rem;">Registro de usuario:</h1>
+                <h1 class="font-regi-login">Registro de usuario:</h1>
                 <form id="registroForm" action="" method="POST">
 
                     <!-- Nombre -->
@@ -146,6 +147,13 @@
                     <div class="mb-3">
                         <label for="email" class="form-label">Correo electrónico</label>
                         <input type="email" class="form-control" id="email" name="email"
+                            placeholder="tucorreo@ejemplo.com" required>
+                    </div>
+
+                    <!-- Correo -->
+                    <div class="mb-3">
+                        <label for="confirmEmail" class="form-label">Confirmar correo electrónico</label>
+                        <input type="email" class="form-control" id="confirmEmail" name="email"
                             placeholder="tucorreo@ejemplo.com" required>
                     </div>
 

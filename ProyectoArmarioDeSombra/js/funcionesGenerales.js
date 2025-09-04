@@ -129,7 +129,6 @@ document.addEventListener("DOMContentLoaded", () => {
   form.addEventListener("submit", (e) => {
     e.preventDefault();
 
-
     const nombre = document.getElementById("nombre").value;
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
@@ -138,12 +137,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const region = document.getElementById("region").value;
     const comuna = document.getElementById("comuna").value;
 
-
     if (password !== confirmPassword) {
       alert("Las contraseñas no coinciden");
       return;
     }
-
 
     const usuario = {
       nombre,
@@ -155,15 +152,9 @@ document.addEventListener("DOMContentLoaded", () => {
       permiso: 1
     };
 
-
     localStorage.setItem("usuarioRegistrado", JSON.stringify(usuario));
-
     alert("Usuario registrado y guardado en la sesión ✅");
-
-
     form.reset();
-
-
     window.location.href = "Home.html";
   });
 });
@@ -194,4 +185,104 @@ function crearAdminPorDefecto() {
   }
 }
 
+const productos = [
+  { id:1, nombre:"Polera Iron Maiden", descripcion:"Polera negra de Iron Maiden, diseño con estampado de la banda.", precio:8000, tallas:["S","M"], colores:["Negro"], material:"100% algodón", imagen:"img/PoleraIron.jpg", categoria:"Poleras" },
+  { id:2, nombre:"Polera Slipknot", descripcion:"Polera negra de Slipknot con detalles de metal.", precio:15990, tallas:["S","M"], colores:["Negro"], material:"Poliéster", imagen:"img/PoleraSlip.jpg", categoria:"Poleras" },
+  { id:3, nombre:"Polera The Misfits", descripcion:"Polera de The Misfits, diseño icónico con estampado de la banda.", precio:25990, tallas:["S","M"], colores:["Negro"], material:"100% algodón", imagen:"img/PoleraMis.jpg", categoria:"Poleras" },
+  { id:4, nombre:"Polera Esqueleto", descripcion:"Polera negra de The Misfits con alter. diseño clásico con estampado", precio: 10000, tallas:["S","M","L"], colores:["Negro"], material:"Poliester", imagen:"img/PoleraCost.jpg", categoria:"Poleras" },
+  { id:5, nombre:"Falda Murcielagos", descripcion:"Falda negra con estampado de murcielagos.", precio:11000, tallas:["S","M","L"], colores:["Negro"], material:"Algodón", imagen:"img/FaldaMur.jpg", categoria:"Faldas" },
+  { id:6, nombre:"Falda Amon Amarth", descripcion:"Falda negra con estampado de la banda Amon Amarth.", precio:11000, tallas:["S","M","L"], colores:["Negro"], material:"100% algodón", imagen:"img/FaldaAmon.jpg", categoria:"Faldas" },
+  { id:7, nombre:"Falda Distubed", descripcion:"Falda negra con estampado de la banda Disturbed.", precio:9000, tallas:["S","M"], colores:["Negro"], material:"Poliéster", imagen:"img/FaldaDis.png", categoria:"Faldas" },
+  { id:8, nombre:"Falda Baphomet", descripcion:"Flada negra con estampado de la banda Baphomet", precio:12000, tallas:["S","M","L"], colores:["Negro"], material:"Algodón", imagen:"img/FaldaBap.png", categoria:"Faldas" },
+  { id:9, nombre:"Calza Baphometh", descripcion:"Calza negra con estampado de la banda Baphometh", precio:10000, tallas:["S","M","L"], colores:["Negro"], material:"Poliéster", imagen:"img/CalzaBap.jpg", categoria:"Calzas" },
+  { id:10, nombre:"Calza Cadenas", descripcion:"Calza negra con estampado de cadenas", precio:10000, tallas:["S","M"], colores:["Negro"], material:"Poliéster", imagen:"img/CalzaCade.png", categoria:"Calzas" },
+  { id:11, nombre:"Calza Nargaroth", descripcion:"Calza con estampado de banda Nargaroth", precio:10000, tallas:["S","M","L"], colores:["Negro"], material:"Algodón", imagen:"img/CalzaNar.png", categoria:"Calzas" },
+  { id:12, nombre:"Calza Baphometh latex", descripcion:"Calza negra con estampado de Baphometh", precio:10000, tallas:["M"], colores:["Negro"], material:"Latex", imagen:"img/CalzaBap2.png", categoria:"Calzas" },
+  { id:13, nombre:"Chocker cruz", descripcion:"Chocker de cruz con encaje", precio:5000, tallas:["Standar"], colores:["Negro"], material:"Cuero sintetico", imagen:"img/ChokerCruz.jpg", categoria:"Accesorios" },
+  { id:14, nombre:"Arnes Estrella", descripcion:"Arnes elasticado con cadenas", precio:10000, tallas:["Standar"], colores:["Negro"], material:"elástico grueso", imagen:"img/Arnes1.jpg", categoria:"Accesorios" },
+  { id:15, nombre:"Chocker calavera", descripcion:"Chocker negro de calavera y cadenas", precio:5000, tallas:["Standar"], colores:["Negro"], material:"Cuero sintetico", imagen:"img/ChockerCalavera.jpg", categoria:"Accesorios" },
+  { id:16, nombre:"Cinturon baphomet", descripcion:"Cinturon negro con cadenas de baphomet", precio:12000, tallas:["Standar"], colores:["Negro"], material:"Cuero sintetico", imagen:"img/Cinturon.jpg", categoria:"Accesorios" }
+];
+//Funcion  (crear card y modal)
+function crearCard(prod){
+  return `
+    <div class="col-md-3 mb-5">
+      <div class="card">
+        <img class="card-img-top" src="${prod.imagen}" alt="${prod.nombre}">
+        <div class="card-body text-center">
+          <h3 class="card-title">${prod.nombre}</h3>
+          <p class="card-text">${prod.descripcion}</p>
+          <button type="button" class="btn button1" data-bs-toggle="modal" data-bs-target="#modal${prod.id}">Ver más</button>
+        </div>
+      </div>
+    </div>
+  `;
+}
 
+function crearModal(prod){
+  return `
+    <div class="modal fade" id="modal${prod.id}" tabindex="-1" aria-labelledby="tituloModal${prod.id}" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="tituloModal${prod.id}">${prod.nombre}</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+          <div class="modal-body">
+            <img src="${prod.imagen}" class="img-fluid mb-3" alt="${prod.nombre}">
+            <p><strong>Precio:</strong> $${prod.precio.toLocaleString()} CLP</p>
+            <p><strong>Tallas disponibles:</strong> ${prod.tallas.join(", ")}</p>
+            <p><strong>Colores disponibles:</strong> ${prod.colores.join(", ")}</p>
+            <p><strong>Material:</strong> ${prod.material}</p>
+            <p><strong>Descripción:</strong> ${prod.descripcion}</p>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            <button class="btn btn-success">Agregar al carrito</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+//Funcion para crear card y modal en home (solo 4)
+function renderizarProductosHome(productos) {
+  const contenedorProductos = document.getElementById("contenedor-productos");
+  const contenedorModals = document.getElementById("contenedor-modals");
+
+  // Limpiar contenedores antes de renderizar
+  contenedorProductos.innerHTML = "";
+  contenedorModals.innerHTML = "";
+
+  // Tomar solo los primeros 4 productos
+  productos.slice(-4).forEach(prod => {
+    // Agregar card y modal usando funciones auxiliares
+    contenedorProductos.innerHTML += crearCard(prod);
+    contenedorModals.innerHTML += crearModal(prod);
+  });
+}
+
+function renderizarProductosPorCategoria(categoria) {
+  const contenedorProductos = document.getElementById("contenedor-productos");
+  const contenedorModals = document.getElementById("contenedor-modals");
+
+  // Limpiar contenedores antes de renderizar
+  contenedorProductos.innerHTML = "";
+  contenedorModals.innerHTML = "";
+
+  // Filtrar productos por categoría
+  const productosFiltrados = categoria === "Todos"
+    ? productos
+    : productos.filter(prod => prod.categoria === categoria);
+
+  productosFiltrados.forEach(prod => {
+    contenedorProductos.innerHTML += crearCard(prod);
+    contenedorModals.innerHTML += crearModal(prod);
+  });
+}
+renderizarProductosPorCategoria("Poleras");   // Solo productos Poleras
+renderizarProductosPorCategoria("Calzas");    // Solo productos Calzas
+renderizarProductosPorCategoria("Faldas");    // Solo productos Faldas
+renderizarProductosPorCategoria("Accesorios");// Solo productos Accesorios
+renderizarProductosPorCategoria("Todos");     // Todos los productos
