@@ -124,55 +124,72 @@ function cargarRegiones(regionSelectId, comunaSelectId) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+  crearAdminPorDefecto();
+
   const form = document.getElementById("registroForm");
 
-  form.addEventListener("submit", (e) => {
-    e.preventDefault();
+  if (form) {  // Evita el error de null en páginas sin formulario
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
 
-    const nombre = document.getElementById("nombre").value;
-    const email = document.getElementById("email").value;
-    const password = document.getElementById("password").value;
-    const confirmPassword = document.getElementById("confirmPassword").value;
-    const telefono = document.getElementById("telefono").value;
-    const region = document.getElementById("region").value;
-    const comuna = document.getElementById("comuna").value;
+      const nombre = document.getElementById("nombre").value;
+      const email = document.getElementById("email").value;
+      const confirmEmail = document.getElementById("confirmEmail").value;
+      const password = document.getElementById("password").value;
+      const confirmPassword = document.getElementById("confirmPassword").value;
+      const telefono = document.getElementById("telefono").value;
+      const region = document.getElementById("region").value;
+      const comuna = document.getElementById("comuna").value;
 
-    if (password !== confirmPassword) {
-      alert("Las contraseñas no coinciden");
-      return;
-    }
+      // Validaciones
+      if (email !== confirmEmail) {
+        alert("Los correos no coinciden");
+        return;
+      }
 
-    const usuario = {
-      nombre,
-      email,
-      password,
-      telefono,
-      region,
-      comuna,
-      permiso: 1
-    };
+      if (password !== confirmPassword) {
+        alert("Las contraseñas no coinciden");
+        return;
+      }
 
-    localStorage.setItem("usuarioRegistrado", JSON.stringify(usuario));
-    alert("Usuario registrado y guardado en la sesión ✅");
-    form.reset();
-    window.location.href = "Home.html";
-  });
+      // Recuperar lista de usuarios
+      let usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
+
+      // Crear usuario normal (permiso 1)
+      const usuario = {
+        nombre,
+        email,
+        password,
+        telefono,
+        region,
+        comuna,
+        permiso: 1
+      };
+
+      usuarios.push(usuario);
+
+      // Guardar en LocalStorage
+      localStorage.setItem("usuarios", JSON.stringify(usuarios));
+
+      alert("Usuario registrado y guardado en LocalStorage ✅");
+      form.reset();
+      window.location.href = "Home.html";
+    });
+  }
 });
 
-
 // Crear usuario admin por defecto (permiso 0)
-
 function crearAdminPorDefecto() {
-  let usuarios = JSON.parse(localStorage.getItem("usuarioAdmi")) || [];
+  let usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
 
-  // Verificar si ya hay un admin creado
+  // Verificar si ya existe un admin
   const existeAdmin = usuarios.some(u => u.permiso === 0);
 
   if (!existeAdmin) {
     const admin = {
       nombre: "Administrador",
       email: "admin@tienda.cl",
-      password: "admin123",  
+      password: "admin123",
       telefono: "000000000",
       region: "Región Metropolitana",
       comuna: "Santiago",
@@ -180,16 +197,15 @@ function crearAdminPorDefecto() {
     };
 
     usuarios.push(admin);
-    localStorage.setItem("usuarioAdmi", JSON.stringify(usuarios));
-    
+    localStorage.setItem("usuarios", JSON.stringify(usuarios));
   }
 }
 
 const productos = [
-  { id:1, nombre:"Polera Iron Maiden", descripcion:"Polera negra de Iron Maiden, diseño con estampado de la banda.", precio:8000, tallas:["S","M"], colores:["Negro"], material:"100% algodón", imagen:"img/PoleraIron.jpg", categoria:"Poleras" },
-  { id:2, nombre:"Polera Slipknot", descripcion:"Polera negra de Slipknot con detalles de metal.", precio:15990, tallas:["S","M"], colores:["Negro"], material:"Poliéster", imagen:"img/PoleraSlip.jpg", categoria:"Poleras" },
-  { id:3, nombre:"Polera The Misfits", descripcion:"Polera de The Misfits, diseño icónico con estampado de la banda.", precio:25990, tallas:["S","M"], colores:["Negro"], material:"100% algodón", imagen:"img/PoleraMis.jpg", categoria:"Poleras" },
-  { id:4, nombre:"Polera Esqueleto", descripcion:"Polera negra de The Misfits con alter. diseño clásico con estampado", precio: 10000, tallas:["S","M","L"], colores:["Negro"], material:"Poliester", imagen:"img/PoleraCost.jpg", categoria:"Poleras" },
+  { id:1, nombre:"Polera Iron Maiden", descripcion:"Polera con diseño de Iron Maiden.", precio:8000, tallas:["S","M"], colores:["Negro"], material:"100% algodón", imagen:"img/PoleraIron.jpg", categoria:"Poleras" },
+  { id:2, nombre:"Polera Slipknot", descripcion:"Polera de Slipknot con detalles de metal.", precio:15990, tallas:["S","M"], colores:["Negro"], material:"Poliéster", imagen:"img/PoleraSlip.jpg", categoria:"Poleras" },
+  { id:3, nombre:"Polera The Misfits", descripcion:"Polera con diseño de The Misfits", precio:25990, tallas:["S","M"], colores:["Negro"], material:"100% algodón", imagen:"img/PoleraMis.jpg", categoria:"Poleras" },
+  { id:4, nombre:"Polera Esqueleto", descripcion:"Polera halter con diseño de The Misfits", precio: 10000, tallas:["S","M","L"], colores:["Negro"], material:"Poliester", imagen:"img/PoleraCost.jpg", categoria:"Poleras" },
   { id:5, nombre:"Falda Murcielagos", descripcion:"Falda negra con estampado de murcielagos.", precio:11000, tallas:["S","M","L"], colores:["Negro"], material:"Algodón", imagen:"img/FaldaMur.jpg", categoria:"Faldas" },
   { id:6, nombre:"Falda Amon Amarth", descripcion:"Falda negra con estampado de la banda Amon Amarth.", precio:11000, tallas:["S","M","L"], colores:["Negro"], material:"100% algodón", imagen:"img/FaldaAmon.jpg", categoria:"Faldas" },
   { id:7, nombre:"Falda Distubed", descripcion:"Falda negra con estampado de la banda Disturbed.", precio:9000, tallas:["S","M"], colores:["Negro"], material:"Poliéster", imagen:"img/FaldaDis.png", categoria:"Faldas" },
@@ -210,8 +226,8 @@ function crearCard(prod){
       <div class="card">
         <img class="card-img-top" src="${prod.imagen}" alt="${prod.nombre}">
         <div class="card-body text-center">
-          <h3 class="card-title">${prod.nombre}</h3>
-          <p class="card-text">${prod.descripcion}</p>
+          <h2 class="card-title">${prod.nombre}</h2>
+          <h3 class="card-text">${prod.descripcion}</h3>
           <button type="button" class="btn button1" data-bs-toggle="modal" data-bs-target="#modal${prod.id}">Ver más</button>
         </div>
       </div>
@@ -237,8 +253,8 @@ function crearModal(prod){
             <p><strong>Descripción:</strong> ${prod.descripcion}</p>
           </div>
           <div class="modal-footer">
-            <button class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-            <button class="btn btn-success">Agregar al carrito</button>
+            <button class="btn button1" data-bs-dismiss="modal">Cerrar</button>
+            <button class="btn button2">Agregar al carrito</button>
           </div>
         </div>
       </div>
