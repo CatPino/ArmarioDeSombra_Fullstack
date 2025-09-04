@@ -11,24 +11,20 @@
     <style>
         .container-register {
             display: block;       /* normal flow */
-            max-width: 700px;     /* ancho máximo de la card */
+            max-width: 600px;     /* ancho máximo de la card */
             margin-bottom: 40px; /* separa del navbar y del footer */
             margin-top: 40px;
         }
-
         .card-register {
-            width: 100%;
-            height: auto;         /* se ajusta al contenido */
-            padding: 1rem;
-            background-color: white;
-            border-radius: 15px;
-            box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.512);
+            background-color: #fff;            /* Fondo blanco */
+            border-radius: 15px;               /* Bordes redondeados */
+            box-shadow: 0 8px 20px rgba(166, 0, 255, 0.36);  /* Sombra suave */
+            padding: 30px 25px;                /* Espacio interno */
+            max-width: 600px;                  /* Ancho máximo */
+            height: 850px;
+            margin: 20px auto;                 /* Centrado horizontal y margen arriba/abajo */
         }
-        .font-regi-login {
-            font-size: 2rem;
-            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-            color: #000000;
-    }
+
     </style>
 </head>
 
@@ -75,7 +71,7 @@
                             <a class="nav-link" href="Blogs.html">Blogs</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Contacto</a>
+                            <a class="nav-link" href="Contacto.html">Contacto</a>
                         </li>
                     </ul>
                 </div>
@@ -97,11 +93,11 @@
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="carritoModalLabel">Carrito de Compras</h5>
+                        <h2 class="modal-title" id="carritoModalLabel">Carrito de Compras</h2>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
                     </div>
                     <div class="modal-body">
-                        <p>No hay productos en el carrito.</p>
+                        <h3>No hay productos en el carrito.</h3>
                         <!-- Aquí puedes agregar dinámicamente tus productos con JS -->
                     </div>
                     <div class="modal-footer">
@@ -117,11 +113,11 @@
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h3 class="modal-title titulo" id="usuarioModalLabel">Usuario</h3>
+                        <h2 class="modal-title titulo" id="usuarioModalLabel">Usuario</h2>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
                     </div>
                     <div class="modal-body">
-                        <p>Inicia sesión o accede a tu perfil.</p>
+                        <h3>Inicia sesión o accede a tu perfil.</h3>
                         <button class="btn w-100 mb-2 button1" onclick="window.location.href='Login.html'">Iniciar
                             sesión</button>
                         <button class="btn w-100 button2"
@@ -132,74 +128,70 @@
         </div>
 
         <div class="container container-register">
-            <div class="card card-register">
-                <h1 class="font-regi-login">Registro de usuario:</h1>
-                <form id="registroForm" action="" method="POST">
+            <h2><strong>Registro de usuario</strong></h2>
+            <h3>Ingresa tus datos y forma parte de Armario De Sombra. ¡Te esperamos con lo mejor en moda y accesorios!</h3>
 
-                    <!-- Nombre -->
-                    <div class="mb-3">
-                        <label for="nombre" class="form-label">Nombre</label>
-                        <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Tu nombre"
-                            required>
-                    </div>
+                <div class="card card-register">
+                    <form id="registroForm" action="" method="POST" style="margin-top: 15px;">
 
-                    <!-- Correo -->
-                    <div class="mb-3">
-                        <label for="email" class="form-label">Correo electrónico</label>
-                        <input type="email" class="form-control" id="email" name="email"
-                            placeholder="tucorreo@ejemplo.com" required>
-                    </div>
+                            <!-- Nombre -->
+                        <div class="mb-3">
+                            <label for="nombre" class="form-label">Nombre</label>
+                            <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Tu nombre"required>
+                        </div>
 
-                    <!-- Correo -->
-                    <div class="mb-3">
-                        <label for="confirmEmail" class="form-label">Confirmar correo electrónico</label>
-                        <input type="email" class="form-control" id="confirmEmail" name="email"
-                            placeholder="tucorreo@ejemplo.com" required>
-                    </div>
+                            <!-- Correo -->
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Correo electrónico</label>
+                            <input type="email" class="form-control" id="email" name="email" placeholder="tucorreo@ejemplo.com" required>
+                        </div>
 
-                    <!-- Contraseña -->
-                    <div class="mb-3">
-                        <label for="password" class="form-label">Contraseña</label>
-                        <input type="password" class="form-control" id="password" name="password"
-                            placeholder="Crea una contraseña" required>
-                    </div>
+                            <!-- Confirmar Correo -->
+                        <div class="mb-3">
+                            <label for="confirmEmail" class="form-label">Confirmar correo electrónico</label>
+                            <input type="email" class="form-control" id="confirmEmail" name="email" placeholder="tucorreo@ejemplo.com" required>
+                        </div>
 
-                    <!-- Confirmar contraseña -->
-                    <div class="mb-3">
-                        <label for="confirmPassword" class="form-label">Confirmar contraseña</label>
-                        <input type="password" class="form-control" id="confirmPassword" name="confirmPassword"
-                            placeholder="Repite tu contraseña" required>
-                    </div>
+                            <!-- Contraseña -->
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Contraseña</label>
+                            <input type="password" class="form-control" id="password" name="password" placeholder="Crea una contraseña" required>
+                        </div>
 
-                    <div class="mb-3">
-                        <label for="telefono" class="form-label">Telefono</label>
-                        <input type="tel" class="form-control" id="telefono" name="confirmPassword"
-                            placeholder="numero de telefono" required>
-                    </div>
+                            <!-- Confirmar contraseña -->
+                        <div class="mb-3">
+                            <label for="confirmPassword" class="form-label">Confirmar contraseña</label>
+                            <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="Repite tu contraseña" required>
+                        </div>
 
-                    <!-- Región -->
-                    <div class="mb-3">
-                        <label for="region" class="etiqueta">Región</label>
-                        <select name="region" id="region" class="form-select" required></select>
-                    </div>
+                        <div class="mb-3">
+                            <label for="telefono" class="form-label">Telefono</label>
+                            <input type="tel" class="form-control" id="telefono" name="confirmPassword" placeholder="numero de telefono" required>
+                        </div>
 
-                    <!-- Comuna -->
-                    <div class="mb-3">
-                        <label for="comuna" class="etiqueta">Comuna</label>
-                        <select name="comuna" id="comuna" class="form-select" disabled required></select>
-                    </div>
+                            <!-- Región -->
+                        <div class="mb-3">
+                            <label for="region" class="etiqueta">Región</label>
+                            <select name="region" id="region" class="form-select" required></select>
+                        </div>
 
-                    <!-- Botón -->
-                    <button type="submit" class="btn w-100 button1">Registrarse</button>
+                            <!-- Comuna -->
+                        <div class="mb-3">
+                            <label for="comuna" class="etiqueta">Comuna</label>
+                            <select name="comuna" id="comuna" class="form-select" disabled required></select>
+                        </div>
 
-                    <!-- Enlace para ir a login -->
-                    <p class="text-center mt-3 mb-0">¿Ya tienes una cuenta?
-                        <a href="Login.html">Inicia sesión</a>
-                    </p>
-                </form>
+                            <!-- Botón -->
+                        <button type="submit" class="btn w-100 button1" >Registrarse</button>
+
+                            <!-- Enlace para ir a login -->
+                        <p class="text-center mt-3 mb-0">¿Ya tienes una cuenta?
+                            <a href="Login.html">Inicia sesión</a>
+                        </p>
+                    </form>
+                </div>
             </div>
-        </div>
-    </div>
+        </div>    
 
     <!--footer-->
     <footer class="mi-footer">
