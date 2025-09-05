@@ -3,7 +3,7 @@
 /**
  * Busca un usuario por correo en localStorage.
  * @param {string} email
- * @returns {object|null} usuario encontrado o null
+ * @returns {object|null} 
  */
 function buscarUsuarioPorCorreo(email) {
   const usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];

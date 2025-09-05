@@ -26,6 +26,21 @@ function htmlNavbar() {
         <a class="navbar-brand mx-auto order-0" href="Home.html">
           <img src="img/Logo.png" alt="Logo" width="60">
         </a>
+        
+        <div class="iconos-navbar d-flex align-items-center gap-3">
+          <div class="position-relative">
+            <button type="button" class="btn btn-transparent p-0" data-bs-toggle="modal" data-bs-target="#carritoModal">
+              <img src="img/carrito1.png" alt="Carrito">
+            </button>
+            <!-- Badge de cantidad -->
+            <span id="cartCount"
+                  class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger d-none"
+                  style="font-size:.65rem;">0</span>
+          </div>
+          <button type="button" class="btn btn-transparent p-0" data-bs-toggle="modal" data-bs-target="#usuarioModal">
+            <img src="img/user.png" alt="Usuario">
+          </button>
+        </div>
 
         <!-- Menú -->
         <div class="collapse navbar-collapse" id="Menu">
@@ -43,31 +58,15 @@ function htmlNavbar() {
                 <li><a class="dropdown-item" href="Faldas.html">Faldas</a></li>
                 <li><a class="dropdown-item" href="Accesorios.html">Accesorios</a></li>
               </ul>
-            </li>
-            <li class="nav-item"><a class="nav-link" href="Nosotros.html">Nosotros</a></li>
-            <li class="nav-item"><a class="nav-link" href="Blogs.html">Blogs</a></li>
-            <li class="nav-item"><a class="nav-link" href="Contacto.html">Contacto</a></li>
-          </ul>
-        </div>
-
-        <!-- Iconos -->
-        <div class="iconos-navbar d-flex align-items-center gap-3">
-          <div class="position-relative">
-            <button type="button" class="btn btn-transparent p-0" data-bs-toggle="modal" data-bs-target="#carritoModal">
-              <img src="img/carrito1.png" alt="Carrito">
-            </button>
-            <!-- Badge de cantidad -->
-            <span id="cartCount"
-                  class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger d-none"
-                  style="font-size:.65rem;">0</span>
+              </li>
+              <li class="nav-item"><a class="nav-link" href="Nosotros.html">Nosotros</a></li>
+              <li class="nav-item"><a class="nav-link" href="Blogs.html">Blogs</a></li>
+              <li class="nav-item"><a class="nav-link" href="Contacto.html">Contacto</a></li>
+            </ul>
           </div>
-          <button type="button" class="btn btn-transparent p-0" data-bs-toggle="modal" data-bs-target="#usuarioModal">
-            <img src="img/user.png" alt="Usuario">
-          </button>
         </div>
-      </div>
-    </nav>
-  </div>`;
+      </nav>
+    </div>`;
 }
 
 function htmlModales() {
@@ -108,9 +107,10 @@ function htmlFooter() {
   return `
   <footer class="mi-footer">
     <div class="container">
-      <h2 style="color: white;">Síguenos en:</h2>
+      <h3 style="color: white;">Armario de sombra | desde 2020 &copy</h3>
+      <h3 style="color: white;">Síguenos en instagram </h3>
       <a href="https://www.instagram.com/" target="_blank">
-        <img src="img/instagram.png" alt="Instagram" width="40" height="40">
+        <img src="img/instagram.png" alt="Instagram" width="35" height="35">
       </a>
     </div>
   </footer>`;
@@ -360,23 +360,23 @@ function setProductos(list) {
 function crearCard(prod) {
   return `
     <div class="col-md-3 mb-5">
-      <div class="card h-100 position-relative">
+      <div class="card h-100 d-flex flex-column">
+        <!-- Imagen clickeable -->
+        <img class="card-img-top" src="${prod.imagen}" alt="${prod.nombre}" role="button" data-bs-toggle="modal" data-bs-target="#modal${prod.id}">
         
-        <!-- Contenedor que abre el modal -->
-        <div role="button" data-bs-toggle="modal" data-bs-target="#modal${prod.id}">
-          <img class="card-img-top" src="${prod.imagen}" alt="${prod.nombre}">
-          <div class="card-body text-center">
-            <h2 class="card-title">${prod.nombre}</h2>
-            <h3 class="card-text">${prod.descripcion}</h3>
-            <p class="fw-bold">$${prod.precio.toLocaleString()} CLP</p>
-          </div>
+        <!-- Body -->
+        <div class="card-body text-center d-flex flex-column flex-grow-1">
+          <h2 class="card-title">${prod.nombre}</h2>
+          <h3 class="card-text text-truncate" style="-webkit-line-clamp: 3; display: -webkit-box; -webkit-box-orient: vertical; overflow: hidden;">
+            ${prod.descripcion}
+          </h3>
+          <h3 class="fw-bold mt-auto">$${prod.precio.toLocaleString()} CLP</h3>
         </div>
 
-        <!-- Botón independiente que NO abre modal -->
+        <!-- Footer con botón -->
         <div class="card-footer bg-transparent border-0 text-center p-2">
-          <button class="btn btn-sm button2"
-                  onclick="agregarAlCarrito(${prod.id});">
-             Agregar al carrito
+          <button class="btn btn-sm button2" onclick="agregarAlCarrito(${prod.id});">
+            Agregar al carrito
           </button>
         </div>
       </div>
