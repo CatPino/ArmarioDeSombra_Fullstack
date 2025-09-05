@@ -172,3 +172,36 @@ p{
     max-height: 720px; /* altura máxima para no romper el diseño */
     object-fit: cover; /* recorta la imagen si es necesario */
 }
+
+/* ====== Admin responsive polish ====== */
+.admin-header { row-gap: .5rem; }
+
+.admin-title {
+  /* tamaño flexible: baja en móvil, sube en desktop */
+  font-size: clamp(1.2rem, 1.5vw + 1rem, 2rem);
+  line-height: 1.2;
+  letter-spacing: .5px;
+  margin: 0;
+}
+
+.admin-add.btn {
+  padding: .5rem 1rem;
+  font-size: .95rem;
+  border-radius: .75rem;
+}
+
+/* Evita superposiciones raras si había posición fija/absoluta en algún theme */
+.admin-add { position: static !important; }
+
+/* Tabla: alineación y scroll amable */
+.table td, .table th { vertical-align: middle; }
+.table-responsive { -webkit-overflow-scrolling: touch; }
+
+/* Botones genéricos “button1/2” demasiado grandes en móvil */
+@media (max-width: 576px) {
+  .button1, .button2 { padding: .45rem .9rem; font-size: .95rem; }
+}
+
+/* Navbar: si en tu theme la dejas “fixed-top”, reserva espacio arriba */
+body.has-fixed-navbar { padding-top: 64px; }
+
