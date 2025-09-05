@@ -1,216 +1,120 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <!--incluyendo el archivo CSS de Bootstrap en tu página web.-->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/estilos.css">
-    <style>
-        .container-register {
-            display: block;       /* normal flow */
-            max-width: 600px;     /* ancho máximo de la card */
-            margin-bottom: 40px; /* separa del navbar y del footer */
-            margin-top: 40px;
-        }
-        .card-register {
-            background-color: #fff;            /* Fondo blanco */
-            border-radius: 15px;               /* Bordes redondeados */
-            box-shadow: 0 8px 20px rgba(166, 0, 255, 0.36);  /* Sombra suave */
-            padding: 30px 25px;                /* Espacio interno */
-            max-width: 600px;                  /* Ancho máximo */
-            height: 850px;
-            margin: 20px auto;                 /* Centrado horizontal y margen arriba/abajo */
-        }
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Registro de usuario</title>
 
-    </style>
+  <!-- Bootstrap + tus estilos -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/estilos.css"/>
+
+  <style>
+    .container-register{
+      display:block;
+      max-width:600px;
+      margin:40px auto 60px;
+    }
+    .card-register{
+      background:#fff;
+      border-radius:15px;
+      box-shadow:0 8px 20px rgba(166,0,255,.36);
+      padding:30px 25px;
+    }
+  </style>
 </head>
-
 <body>
-    <div class="container-fluid">
-        <!-- Navbar (Menú) -->
-        <nav class="navbar navbar-expand-sm mi-navbar position-relative">
-            <div class="container-fluid">
+  <!-- El navbar / modales / footer los inyecta initApp() -->
 
-                <!-- Botón de hamburguesa -->
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#Menu"
-                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <img src="img/Menu.png" alt="Menu">
-                </button>
+  <main class="container container-register">
+    <h2 class="mb-2"><strong>Registro de usuario</strong></h2>
+    <h3 class="fs-6 text-muted mb-4">
+      Ingresa tus datos y forma parte de Armario De Sombra. ¡Te esperamos!
+    </h3>
 
-
-                <a class="navbar-brand mx-auto order-0" href="Home.html">
-                    <img src="img/Logo.png" alt="Logo" width="60">
-                </a>
-
-                <!-- Menú de navegación -->
-                <div class="collapse navbar-collapse" id="Menu">
-                    <ul class="navbar-nav mx-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="Home.html">Home</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="Producto.html" role="button"
-                                data-bs-toggle="dropdown" aria-expanded="false">
-                                Productos
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="Todos.html">Todo los productos</a></li>
-                                <li><a class="dropdown-item" href="Poleras.html">Poleras</a></li>
-                                <li><a class="dropdown-item" href="Calzas.html">Calzas</a></li>
-                                <li><a class="dropdown-item" href="Faldas.html">Faldas</a></li>
-                                <li><a class="dropdown-item" href="Accesorios.html">Accesorios</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="Nosotros.html">Nosotros</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="Blogs.html">Blogs</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="Contacto.html">Contacto</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="iconos-navbar">
-                    <button type="button" class="btn btn-transparent p-0" data-bs-toggle="modal"
-                        data-bs-target="#carritoModal">
-                        <img src="img/carrito1.png">
-                    </button>
-                    <button type="button" class="btn btn-transparent p-0" data-bs-toggle="modal"
-                        data-bs-target="#usuarioModal">
-                        <img src="img/user.png">
-                    </button>
-                </div>
-            </div>
-        </nav>
-
-        <!--Modal de carrito de compra)-->
-        <div class="modal fade" id="carritoModal" tabindex="-1" aria-labelledby="carritoModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h2 class="modal-title" id="carritoModalLabel">Carrito de Compras</h2>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
-                    </div>
-                    <div class="modal-body">
-                        <h3>No hay productos en el carrito.</h3>
-                        <!-- Aquí puedes agregar dinámicamente tus productos con JS -->
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn button2" data-bs-dismiss="modal">Cerrar</button>
-                        <button type="button" class="btn button1">Ir al pago</button>
-                    </div>
-                </div>
-            </div>
+    <div class="card card-register">
+      <form id="registroForm" novalidate>
+        <!-- Nombre -->
+        <div class="mb-3">
+          <label for="nombre" class="form-label">Nombre</label>
+          <input type="text" class="form-control" id="nombre" placeholder="Tu nombre" required>
+          <div id="err-nombre" class="invalid-feedback"></div>
         </div>
 
-        <!-- Modal del usuario -->
-        <div class="modal fade" id="usuarioModal" tabindex="-1" aria-labelledby="usuarioModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h2 class="modal-title titulo" id="usuarioModalLabel">Usuario</h2>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
-                    </div>
-                    <div class="modal-body">
-                        <h3>Inicia sesión o accede a tu perfil.</h3>
-                        <button class="btn w-100 mb-2 button1" onclick="window.location.href='Login.html'">Iniciar
-                            sesión</button>
-                        <button class="btn w-100 button2"
-                            onclick="window.location.href='Registro.html'">Regístrate</button>
-                    </div>
-                </div>
-            </div>
+        <!-- Correo -->
+        <div class="mb-3">
+          <label for="email" class="form-label">Correo electrónico</label>
+          <input type="email" class="form-control" id="email" placeholder="tucorreo@ejemplo.com" required>
+          <div id="err-email" class="invalid-feedback"></div>
         </div>
 
-        <div class="container container-register">
-            <h2><strong>Registro de usuario</strong></h2>
-            <h3>Ingresa tus datos y forma parte de Armario De Sombra. ¡Te esperamos con lo mejor en moda y accesorios!</h3>
-
-                <div class="card card-register">
-                    <form id="registroForm" action="" method="POST" style="margin-top: 15px;">
-
-                            <!-- Nombre -->
-                        <div class="mb-3">
-                            <label for="nombre" class="form-label">Nombre</label>
-                            <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Tu nombre"required>
-                        </div>
-
-                            <!-- Correo -->
-                        <div class="mb-3">
-                            <label for="email" class="form-label">Correo electrónico</label>
-                            <input type="email" class="form-control" id="email" name="email" placeholder="tucorreo@ejemplo.com" required>
-                        </div>
-
-                            <!-- Confirmar Correo -->
-                        <div class="mb-3">
-                            <label for="confirmEmail" class="form-label">Confirmar correo electrónico</label>
-                            <input type="email" class="form-control" id="confirmEmail" name="email" placeholder="tucorreo@ejemplo.com" required>
-                        </div>
-
-                            <!-- Contraseña -->
-                        <div class="mb-3">
-                            <label for="password" class="form-label">Contraseña</label>
-                            <input type="password" class="form-control" id="password" name="password" placeholder="Crea una contraseña" required>
-                        </div>
-
-                            <!-- Confirmar contraseña -->
-                        <div class="mb-3">
-                            <label for="confirmPassword" class="form-label">Confirmar contraseña</label>
-                            <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="Repite tu contraseña" required>
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="telefono" class="form-label">Telefono</label>
-                            <input type="tel" class="form-control" id="telefono" name="confirmPassword" placeholder="numero de telefono" required>
-                        </div>
-
-                            <!-- Región -->
-                        <div class="mb-3">
-                            <label for="region" class="etiqueta">Región</label>
-                            <select name="region" id="region" class="form-select" required></select>
-                        </div>
-
-                            <!-- Comuna -->
-                        <div class="mb-3">
-                            <label for="comuna" class="etiqueta">Comuna</label>
-                            <select name="comuna" id="comuna" class="form-select" disabled required></select>
-                        </div>
-
-                            <!-- Botón -->
-                        <button type="submit" class="btn w-100 button1" >Registrarse</button>
-
-                            <!-- Enlace para ir a login -->
-                        <p class="text-center mt-3 mb-0">¿Ya tienes una cuenta?
-                            <a href="Login.html">Inicia sesión</a>
-                        </p>
-                    </form>
-                </div>
-            </div>
-        </div>    
-
-    <!--footer-->
-    <footer class="mi-footer">
-        <div class="container">
-            <h2 style="color: white;">Siguenos en:</h2>
-            <a href="https://www.instagram.com/" target="_blank">
-                <img src="img/instagram.png" alt="Instagram" width="40" height="40">
-            </a>
+        <!-- Confirmar correo -->
+        <div class="mb-3">
+          <label for="confirmEmail" class="form-label">Confirmar correo electrónico</label>
+          <input type="email" class="form-control" id="confirmEmail" placeholder="Repite tu correo" required>
+          <div id="err-confirmEmail" class="invalid-feedback"></div>
         </div>
-    </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="js/funcionesGenerales.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // Pasa los IDs de los <select>
-            cargarRegiones('region', 'comuna');
-        });
-    </script>
+        <!-- Contraseña -->
+        <div class="mb-3">
+          <label for="password" class="form-label">Contraseña</label>
+          <input type="password" class="form-control" id="password" placeholder="Crea una contraseña" required>
+          <div class="form-text">
+            Mínimo 8 caracteres, con mayúscula, minúscula y número.
+          </div>
+          <div id="err-password" class="invalid-feedback"></div>
+        </div>
+
+        <!-- Confirmar contraseña -->
+        <div class="mb-3">
+          <label for="confirmPassword" class="form-label">Confirmar contraseña</label>
+          <input type="password" class="form-control" id="confirmPassword" placeholder="Repite tu contraseña" required>
+          <div id="err-confirmPassword" class="invalid-feedback"></div>
+        </div>
+
+        <!-- Teléfono -->
+        <div class="mb-3">
+          <label for="telefono" class="form-label">Teléfono</label>
+          <input type="tel" class="form-control" id="telefono" name="telefono" placeholder="Ej: 912345678">
+          <div id="err-telefono" class="invalid-feedback"></div>
+        </div>
+
+        <!-- Región -->
+        <div class="mb-3">
+          <label for="region" class="form-label">Región</label>
+          <select id="region" class="form-select" required></select>
+          <div id="err-region" class="invalid-feedback"></div>
+        </div>
+
+        <!-- Comuna -->
+        <div class="mb-4">
+          <label for="comuna" class="form-label">Comuna</label>
+          <select id="comuna" class="form-select" disabled required></select>
+          <div id="err-comuna" class="invalid-feedback"></div>
+        </div>
+
+        <!-- Botón -->
+        <button type="submit" class="btn w-100 button1">Registrarse</button>
+
+        <p class="text-center mt-3 mb-0">
+          ¿Ya tienes una cuenta? <a href="Login.html">Inicia sesión</a>
+        </p>
+      </form>
+    </div>
+  </main>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/funcionesGenerales.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      
+      initApp({
+        regionSelectId: 'region',
+        comunaSelectId: 'comuna',
+        registroFormId: 'registroForm'
+      });
+    });
+  </script>
 </body>
-
 </html>
