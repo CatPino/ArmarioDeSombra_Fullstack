@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Inicio de sesión</title>
+  <title>Inicio de sesión - Armario de sombras</title>
 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
   <link rel="stylesheet" href="css/estilos.css"/>
@@ -20,20 +20,20 @@
       box-shadow:0 8px 20px rgba(166,0,255,.36);
       padding:30px 25px;
       max-width:600px;
-      height:auto; /* que crezca según contenido */
+      height:auto; 
       margin:20px auto;
     }
   </style>
 </head>
 <body>
-  <!-- Navbar, modales y footer se inyectan desde funcionesGenerales.js con initApp() -->
+
 
   <div class="container container-login">
     <h2><strong>Inicio de sesión</strong></h2>
     <h3>Inicia sesión para acceder a tu cuenta y continuar tu experiencia en Armario De Sombra.</h3>
 
     <div class="card card-login">
-      <form id="loginForm" style="margin-top:15px;">
+      <form id="loginForm" method="post" action="" style="margin-top:15px;">
         <div class="mb-3">
           <label for="email" class="form-label">Correo Electrónico</label>
           <input type="email" class="form-control" id="email" name="email" placeholder="tucorreo@ejemplo.com" required>
@@ -61,15 +61,14 @@
     </div>
   </div>
 
-  <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script src="js/funcionesGenerales.js"></script>
   <script src="js/login.js"></script>
   <script>
     document.addEventListener("DOMContentLoaded", () => {
-      initApp();               // Inserta navbar, modales (carrito/usuario) y footer
-      controlarModalUsuario(); // Ajusta el modal de usuario si hay sesión
-      initLogin("loginForm");  // Activa el flujo de login de tu login.js
+      initApp();              
+      controlarModalUsuario(); 
+      inicioSesionFormulario("loginForm");  
     });
   </script>
 </body>

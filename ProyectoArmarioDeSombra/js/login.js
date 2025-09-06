@@ -1,20 +1,11 @@
-// login.js
 
-/**
- * Busca un usuario por correo en localStorage.
- * @param {string} email
- * @returns {object|null} 
- */
 function buscarUsuarioPorCorreo(email) {
   const usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
   const e = (email || "").trim().toLowerCase();
   return usuarios.find(u => (u.email || "").trim().toLowerCase() === e) || null;
 }
 
-/**
- * Guarda la sesión activa en sessionStorage (nombre, email, permiso).
- * @param {object} usuario
- */
+
 function guardarSesionActiva(usuario) {
   if (!usuario) return;
   sessionStorage.setItem(
@@ -27,16 +18,11 @@ function guardarSesionActiva(usuario) {
   );
 }
 
-/**
- * Inicializa el flujo de login sobre un formulario dado por ID.
- * Maneja validación mínima, recordarme y redirección a Home.html.
- * @param {string} formId
- */
-function initLogin(formId) {
+
+function inicioSesionFormulario(formId) {
   const form = document.getElementById(formId);
   if (!form) return;
 
-  // Soporte opcional para "Recordarme": precarga si existe
   const emailInput = document.getElementById("email");
   const recordarChk = document.getElementById("Recordar");
   const emailRecordado = localStorage.getItem("emailRecordado");
@@ -67,22 +53,17 @@ function initLogin(formId) {
       return;
     }
 
-    // Guardar sesión activa
     guardarSesionActiva(usuario);
 
-    // Recordarme (opcional)
     if (recordarChk && recordarChk.checked) {
       localStorage.setItem("emailRecordado", (email || "").trim());
     } else {
       localStorage.removeItem("emailRecordado");
     }
-
-    // Redirigir al Home
     window.location.href = "Home.html";
   });
 }
 
-// Auto-init al cargar el documento
 document.addEventListener("DOMContentLoaded", () => {
-  initLogin("loginForm");
+  inicioSesionFormulario("loginForm");
 });

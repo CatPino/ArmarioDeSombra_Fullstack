@@ -8,7 +8,6 @@
   <link rel="stylesheet" href="css/estilos.css"/>
 </head>
 <body>
-  <!-- Navbar, modales y footer se inyectan desde funcionesGenerales.js con initApp() -->
 
   <div class="container mt-4">
     <h1>Faldas</h1>
@@ -18,22 +17,17 @@
       equilibrando lo clásico y lo moderno en un look que nunca pasa desapercibido.
     </h2>
 
-    <!-- Contenedor donde JS inyectará las cards -->
     <div class="row mt-5" id="contenedor-productos"></div>
   </div>
 
-  <!-- Contenedor donde JS inyectará los modals de productos -->
   <div id="contenedor-modals"></div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="js/funcionesGenerales.js"></script>
   <script>
     document.addEventListener("DOMContentLoaded", () => {
-      // Inserta navbar, modales (carrito/usuario) y footer de forma global
       initApp();
-
-      // Pinta la categoría Faldas
-      renderizarProductosPorCategoria("Faldas");
+      cargarProductosCategoria("Faldas");
     });
   </script>
 </body>
