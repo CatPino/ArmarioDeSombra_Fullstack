@@ -1,16 +1,4 @@
-/******************************************************
- * funcionesGenerales.js
- * - Inyección de Navbar / Modales / Footer
- * - Registro + Validaciones + Sesión
- * - Productos (persistentes en localStorage)
- * - Catálogo / Render cards y modals
- * - Carrito con badge y modal
- * - Panel Admin: CRUD (crear/editar/eliminar) + modal
- ******************************************************/
 
-/* ============================
-   1) Layout común (Navbar/Modales/Footer)
-   ============================ */
 function htmlNavbar() {
   return `
   <div class="container-fluid">
@@ -116,16 +104,14 @@ function htmlFooter() {
   </footer>`;
 }
 
-function injectCommonLayout() {
-  if (document.getElementById("usuarioModal")) return; // ya inyectado
+function inicializarLayoutBase() {
+  if (document.getElementById("usuarioModal")) return;
   document.body.insertAdjacentHTML("afterbegin", htmlNavbar() + htmlModales());
   document.body.insertAdjacentHTML("beforeend", htmlFooter());
-  controlarModalUsuario(); // adapta el modal al estado de sesión
+  controlarModalUsuario(); 
 }
 
-/* ============================
-   2) Regiones / Comunas (Registro)
-   ============================ */
+
 const comunasPorRegion = {
   "Arica y Parinacota": ["Arica", "Camarones", "Putre", "General Lagos"],
   "Tarapacá": ["Iquique", "Alto Hospicio", "Pozo Almonte", "Camiña", "Colchane", "Huara", "Pica"],
@@ -175,9 +161,6 @@ function cargarRegiones(regionSelectId, comunaSelectId) {
   });
 }
 
-/* ============================
-   3) Usuarios / Sesión
-   ============================ */
 function crearAdminPorDefecto() {
   const usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
   const existeAdmin = usuarios.some(u => u.permiso === 0);
@@ -220,54 +203,95 @@ function controlarModalUsuario() {
   }
 }
 
+
+
+function initContacto(formId) {
+  const form = document.getElementById(formId);
+  if (!form) return;
+
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    const nombre = document.getElementById("nombrecontacto")?.value.trim() || "";
+    const email = document.getElementById("emailcontacto")?.value.trim().toLowerCase() || "";
+    const mensaje = document.getElementById("contenido")?.value.trim() || "";
+
+    // Validaciones básicas
+    if (!nombre || !email || !mensaje) {
+      alert("Por favor completa todos los campos.");
+      return;
+    }
+    if (nombre.length > 100) {
+      alert("El nombre no puede superar los 100 caracteres.");
+      return;
+    }
+    if (email.length > 100) {
+      alert("El correo no puede superar los 100 caracteres.");
+      return;
+    }
+    if (mensaje.length > 500) {
+      alert("El mensaje no puede superar los 500 caracteres.");
+      return;
+    }
+    const emailPattern = /^[a-z0-9._%+-]+@(duoc\.cl|profesor\.duoc\.cl|gmail\.com)$/;
+    if (!emailPattern.test(email)) {
+      alert("El correo debe ser @duoc.cl, @profesor.duoc.cl o @gmail.com");
+      return;
+    }
+
+    alert("Mensaje enviado correctamente.");
+    form.reset();
+  });
+}
+
 function cerrarSesion() {
   sessionStorage.removeItem("usuarioActivo");
   window.location.href = "Login.html";
 }
 
-/* Validaciones (registro) */
-function esEmailValido(email) {
-  const re = /^[^\s@]+@[^\s@]+\.(com|cl)$/i;
-  return re.test((email || "").trim());
-}
-function esPasswordValida(pass) {
-  const re = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d@$!%*?&.#_-]{8,}$/;
-  return re.test(pass || "");
-}
-function esTelefonoValido(fono) {
-  const re = /^\d{9,11}$/;
-  return re.test((fono || "").trim());
-}
-
-/* Helpers visuales (Bootstrap) */
-function setError(id, msg) {
-  const input = document.getElementById(id);
-  const fb = document.getElementById(`err-${id}`);
-  if (!input || !fb) return;
-  input.classList.add("is-invalid");
-  fb.textContent = msg || "Campo inválido";
-}
-function clearError(id) {
-  const input = document.getElementById(id);
-  const fb = document.getElementById(`err-${id}`);
-  if (!input || !fb) return;
-  input.classList.remove("is-invalid");
-  fb.textContent = "";
-}
-function bindLiveClear(id) {
-  const el = document.getElementById(id);
-  if (!el) return;
-  el.addEventListener("input", () => clearError(id));
-  el.addEventListener("change", () => clearError(id));
-}
-
-/* Registro validado */
 function initRegistroValidado(formId) {
   const form = document.getElementById(formId);
   if (!form) return;
 
-  ["nombre","email","confirmEmail","password","confirmPassword","telefono","region","comuna"]
-    .forEach(bindLiveClear);
+  const setError = (id, msg) => {
+    const input = document.getElementById(id);
+    const fb = document.getElementById(`err-${id}`);
+    if (!input || !fb) return;
+    input.classList.add("is-invalid");
+    fb.textContent = msg || "Campo inválido";
+  };
+
+  const clearError = (id) => {
+    const input = document.getElementById(id);
+    const fb = document.getElementById(`err-${id}`);
+    if (!input || !fb) return;
+    input.classList.remove("is-invalid");
+    fb.textContent = "";
+  };
+
+  const bindLiveClear = (id) => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.addEventListener("input", () => clearError(id));
+    el.addEventListener("change", () => clearError(id));
+  };
+
+  const esEmailValido = (email) => {
+    const re = /^[^\s@]+@(duoc\.cl|profesor\.duoc\.cl|gmail\.com)$/i;
+    return re.test((email || "").trim());
+  };
+
+  const esPasswordValida = (pass) => {
+    const re = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d@$!%*?&.#_-]{8,100}$/;
+    return re.test(pass || "");
+  };
+
+  const esTelefonoValido = (fono) => {
+    const re = /^\d{9,11}$/;
+    return re.test((fono || "").trim());
+  };
+
+  ["nombre","email","confirmEmail","password","confirmPassword","telefono","region","comuna"].forEach(bindLiveClear);
 
   form.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -284,18 +308,53 @@ function initRegistroValidado(formId) {
     ["nombre","email","confirmEmail","password","confirmPassword","telefono","region","comuna"].forEach(clearError);
 
     let ok = true;
-    if (nombre.length < 2) { setError("nombre", "El nombre debe tener al menos 2 caracteres."); ok = false; }
-    if (!esEmailValido(email)) { setError("email", "Correo inválido. Debe contener @ y terminar en .com o .cl."); ok = false; }
-    if (email !== confirmEmail) { setError("confirmEmail", "Los correos no coinciden."); ok = false; }
-    if (!esPasswordValida(password)) { setError("password", "Mínimo 8 caracteres, con mayúscula, minúscula y número."); ok = false; }
-    if (password !== confirmPassword) { setError("confirmPassword", "Las contraseñas no coinciden."); ok = false; }
-    if (telefono && !esTelefonoValido(telefono)) { setError("telefono", "El teléfono debe tener entre 9 y 11 dígitos."); ok = false; }
-    if (!region) { setError("region", "Selecciona una región."); ok = false; }
-    if (!comuna) { setError("comuna", "Selecciona una comuna."); ok = false; }
+
+    if (nombre.length < 2 || nombre.length > 100) {
+      setError("nombre", "El nombre debe tener entre 2 y 100 caracteres.");
+      ok = false;
+    }
+
+    if (!esEmailValido(email) || email.length > 100) {
+      setError("email", "Correo inválido. Solo @duoc.cl, @profesor.duoc.cl o @gmail.com, max 100 caracteres.");
+      ok = false;
+    }
+
+    if (email !== confirmEmail) {
+      setError("confirmEmail", "Los correos no coinciden.");
+      ok = false;
+    }
+
+    if (!esPasswordValida(password)) {
+      setError("password", "Contraseña inválida. Mínimo 8 caracteres, mayúscula, minúscula y número. Max 100 caracteres.");
+      ok = false;
+    }
+
+    if (password !== confirmPassword) {
+      setError("confirmPassword", "Las contraseñas no coinciden.");
+      ok = false;
+    }
+
+    if (telefono && (!esTelefonoValido(telefono) || telefono.length > 100)) {
+      setError("telefono", "El teléfono debe tener entre 9 y 11 dígitos, max 100 caracteres.");
+      ok = false;
+    }
+
+    if (!region) {
+      setError("region", "Selecciona una región.");
+      ok = false;
+    }
+
+    if (!comuna) {
+      setError("comuna", "Selecciona una comuna.");
+      ok = false;
+    }
 
     const usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
     const existe = usuarios.some(u => (u.email || "").toLowerCase() === email.toLowerCase());
-    if (existe) { setError("email", "Este correo ya está registrado."); ok = false; }
+    if (existe) {
+      setError("email", "Este correo ya está registrado.");
+      ok = false;
+    }
 
     if (!ok) return;
 
@@ -310,19 +369,15 @@ function initRegistroValidado(formId) {
   });
 }
 
-/* Mostrar/ocultar ítem Admin del navbar */
+
 function toggleAdminNav() {
   const li = document.getElementById("navAdmin");
   if (!li) return;
   esAdmin() ? li.classList.remove("d-none") : li.classList.add("d-none");
 }
 
-/* ============================
-   4) Productos (persistencia)
-   ============================ */
 const KEY_PRODS = "productos";
 
-// Catálogo inicial (se usa una sola vez, si no hay nada en localStorage)
 const initialProductos = [
   { id: 1,  nombre: "Polera Iron Maiden",      descripcion: "Polera con diseño de Iron Maiden.",                      precio: 8000,  tallas: ["S","M"],     colores: ["Negro"], material: "100% algodón", imagen: "img/PoleraIron.jpg",   categoria: "Poleras" },
   { id: 2,  nombre: "Polera Slipknot",         descripcion: "Polera de Slipknot con detalles de metal.",              precio: 15990, tallas: ["S","M"],     colores: ["Negro"], material: "Poliéster",     imagen: "img/PoleraSlip.jpg",   categoria: "Poleras" },
@@ -354,9 +409,6 @@ function setProductos(list) {
   localStorage.setItem(KEY_PRODS, JSON.stringify(list || []));
 }
 
-/* ============================
-   5) Render catálogos (cards + modals)
-   ============================ */
 function crearCard(prod) {
   return `
     <div class="col-md-3 mb-5">
@@ -383,9 +435,6 @@ function crearCard(prod) {
     </div>`;
 }
 
-
-
-
 function crearModal(prod) {
   return `
     <div class="modal fade" id="modal${prod.id}" tabindex="-1" aria-labelledby="tituloModal${prod.id}" aria-hidden="true">
@@ -410,7 +459,7 @@ function crearModal(prod) {
     </div>`;
 }
 
-function renderizarProductosHome() {
+function cargarProductosInicio() {
   const cont = document.getElementById("contenedor-productos");
   const contModals = document.getElementById("contenedor-modals");
   if (!cont || !contModals) return;
@@ -423,7 +472,7 @@ function renderizarProductosHome() {
   });
 }
 
-function renderizarProductosPorCategoria(categoria) {
+function cargarProductosCategoria(categoria) {
   const cont = document.getElementById("contenedor-productos");
   const contModals = document.getElementById("contenedor-modals");
   if (!cont || !contModals) return;
@@ -437,9 +486,6 @@ function renderizarProductosPorCategoria(categoria) {
   });
 }
 
-/* ============================
-   6) Carrito de compras
-   ============================ */
 const KEY_CARRITO = "carrito";
 
 function obtenerCarrito() {
@@ -472,7 +518,7 @@ function agregarAlCarrito(id, { talla = null, color = null, cantidad = 1 } = {})
   }
 
   guardarCarrito(carrito);
-  renderizarCarritoModal();
+  actualizarCarritoModal();
 }
 
 function cambiarCantidadCarrito(id, talla, color, nuevaCantidad) {
@@ -492,7 +538,7 @@ function cambiarCantidadCarrito(id, talla, color, nuevaCantidad) {
   }
 
   guardarCarrito(carrito);
-  renderizarCarritoModal();
+  actualizarCarritoModal();
 }
 
 function quitarDelCarrito(id, talla, color) {
@@ -502,7 +548,7 @@ function quitarDelCarrito(id, talla, color) {
       (i.color || null) === (color || null))
   );
   guardarCarrito(carrito);
-  renderizarCarritoModal();
+  actualizarCarritoModal();
 }
 
 function calcularTotalCarrito() {
@@ -524,7 +570,7 @@ function actualizarBadgeCarrito() {
   badge.classList.toggle("d-none", totalItems === 0);
 }
 
-function renderizarCarritoModal() {
+function actualizarCarritoModal() {
   const modalBody = document.querySelector("#carritoModal .modal-body");
   const modalFooter = document.querySelector("#carritoModal .modal-footer");
   if (!modalBody) return;
@@ -603,16 +649,11 @@ function initCarrito() {
   const carritoModal = document.getElementById("carritoModal");
   if (carritoModal) {
     carritoModal.addEventListener("show.bs.modal", () => {
-      renderizarCarritoModal();
+      actualizarCarritoModal();
     });
   }
 }
 
-/* ============================
-   7) Admin: CRUD productos
-   ============================ */
-
-/** Inyecta (si no existe) el modal de crear/editar producto */
 function ensureAdminModal() {
   if (document.getElementById("modalProductoAdmin")) return;
 
@@ -682,11 +723,9 @@ function ensureAdminModal() {
 
   document.body.insertAdjacentHTML("beforeend", html);
 
-  // Bind de guardar
   document.getElementById("btnGuardarProd")?.addEventListener("click", adminGuardarProducto);
 }
 
-/** Abre modal vacío (crear) */
 function adminAbrirCrear() {
   ensureAdminModal();
   const f = document.getElementById("formProducto");
@@ -698,7 +737,7 @@ function adminAbrirCrear() {
   modal.show();
 }
 
-/** Abre modal con datos (editar) */
+
 function adminAbrirEditar(id) {
   ensureAdminModal();
   const prods = getProductos();
@@ -719,7 +758,6 @@ function adminAbrirEditar(id) {
   modal.show();
 }
 
-/** Guardar (crear o actualizar) */
 function adminGuardarProducto() {
   const id = document.getElementById("prodId").value.trim();
   const nombre = document.getElementById("prodNombre").value.trim();
@@ -740,7 +778,7 @@ function adminGuardarProducto() {
 
   let prods = getProductos();
   if (id) {
-    // editar
+
     const idx = prods.findIndex(p => p.id === Number(id));
     if (idx < 0) { alert("No se encontró el producto para editar."); return; }
     prods[idx] = {
@@ -748,37 +786,35 @@ function adminGuardarProducto() {
       nombre, precio, categoria, tallas, colores, material, descripcion, imagen
     };
   } else {
-    // crear
+
     const nextId = prods.length ? Math.max(...prods.map(x => x.id)) + 1 : 1;
     prods.push({ id: nextId, nombre, precio, categoria, tallas, colores, material, descripcion, imagen });
   }
   setProductos(prods);
 
-  // Cierra modal
+
   bootstrap.Modal.getInstance(document.getElementById("modalProductoAdmin"))?.hide();
 
-  // Si la página tiene tabla admin, pide que se repinte
+
   if (typeof renderTablaAdminProductos === "function") {
     renderTablaAdminProductos();
   }
 
-  // Si es una página de catálogo, repintar también
   if (document.getElementById("contenedor-productos")) {
-    // detecta si hay categoría en el título
+ 
     const h1 = document.querySelector("h1");
     const titulo = h1 ? (h1.textContent || "").toLowerCase() : "";
-    if (titulo.includes("poleras")) renderizarProductosPorCategoria("Poleras");
-    else if (titulo.includes("calzas")) renderizarProductosPorCategoria("Calzas");
-    else if (titulo.includes("faldas")) renderizarProductosPorCategoria("Faldas");
-    else if (titulo.includes("accesorios")) renderizarProductosPorCategoria("Accesorios");
-    else if (titulo.includes("todos")) renderizarProductosPorCategoria("Todos");
-    else renderizarProductosHome();
+    if (titulo.includes("poleras")) cargarProductosCategoria("Poleras");
+    else if (titulo.includes("calzas")) cargarProductosCategoria("Calzas");
+    else if (titulo.includes("faldas")) cargarProductosCategoria("Faldas");
+    else if (titulo.includes("accesorios")) cargarProductosCategoria("Accesorios");
+    else if (titulo.includes("todos")) cargarProductosCategoria("Todos");
+    else cargarProductosInicio();
   }
 
   alert("Producto guardado correctamente.");
 }
 
-/** Eliminar */
 function adminEliminarProducto(id) {
   if (!confirm("¿Seguro que deseas eliminar este producto?")) return;
   let prods = getProductos();
@@ -790,16 +826,12 @@ function adminEliminarProducto(id) {
   }
 }
 
-/** (Opcional) Inicializaciones de UI admin adicionales */
 function initAdminProductosUI() {
   ensureAdminModal();
 }
 
-/* ============================
-   8) Init por página
-   ============================ */
 function initApp(options = {}) {
-  injectCommonLayout();
+  inicializarLayoutBase();
   crearAdminPorDefecto();
 
   if (options.regionSelectId && options.comunaSelectId) {
